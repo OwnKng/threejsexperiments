@@ -1,5 +1,5 @@
-import React, { useRef, Suspense } from "react";
-import { Canvas, useLoader } from "react-three-fiber";
+import React, { Suspense } from "react";
+import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "drei";
 import Model from "./Yuelongxueshan";
 
