@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
-import * as THREE from "three";
 
 export default function Model(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/yuelongxueshan.glb");
-  const ref = useRef();
   return (
     <group ref={group} {...props}>
       <mesh
