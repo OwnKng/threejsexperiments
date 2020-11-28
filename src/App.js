@@ -1,5 +1,5 @@
 import "./App.css";
-import { ThreeDimensionModel } from "./ThreeDimensionalModel.js";
+import { ThreeDimensionModel } from "./ThreeDimensionalModel";
 
 function App() {
   return (
