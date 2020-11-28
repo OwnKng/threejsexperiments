@@ -1,20 +1,8 @@
 import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
-import { OrbitControls, Html, useProgress } from "drei";
+import { OrbitControls, useProgress } from "drei";
 import { RayshaderModel, MaterialModel } from "./Yuelongxueshan";
-import { motion } from "framer-motion";
-
-const Loader = () => {
-  const { progress } = useProgress();
-
-  return (
-    <Html>
-      <motion.div
-        style={{ width: progress, height: 10, background: "white" }}
-      ></motion.div>
-    </Html>
-  );
-};
+import { a, useTransition } from "@react-spring/web";
 
 const Scene = ({ texture }) => {
   return (
@@ -30,7 +18,7 @@ const Scene = ({ texture }) => {
         color={texture ? "white" : "red"}
         intensity={0.5}
       />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={null}>
         {texture ? <RayshaderModel /> : <MaterialModel />}
       </Suspense>
       <OrbitControls />
@@ -49,6 +37,30 @@ export const ThreeDimensionModel = ({ texture }) => {
       >
         <Scene texture={texture} fog />
       </Canvas>
+      <Loader />
     </>
+  );
+};
+
+const Loader = () => {
+  const { active, progress } = useProgress();
+  const transition = useTransition(active, {
+    from: { opacity: 1, progress: 0 },
+    leave: { opacity: 0 },
+    update: { progress },
+  });
+  return transition(
+    ({ progress, opacity }, active) =>
+      active && (
+        <a.div className='loading' style={{ opacity }}>
+          <div className='loading-bar-container'>
+            <a.div className='loading-bar' style={{ width: progress }}>
+              <a.span className='loading-data'>
+                {progress.to((p) => `${p.toFixed(2)}%`)}
+              </a.span>
+            </a.div>
+          </div>
+        </a.div>
+      )
   );
 };
