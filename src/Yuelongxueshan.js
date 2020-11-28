@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
 import * as THREE from "three";
 
+/*
 const Model = () => {
   const group = useRef();
   const { nodes, materials } = useGLTF("/yuelongxueshan.glb");
@@ -16,6 +17,8 @@ const Model = () => {
     </group>
   );
 };
+
+*/
 
 const Mesh = (props) => {
   const group = useRef();
