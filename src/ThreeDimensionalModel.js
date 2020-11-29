@@ -6,7 +6,7 @@ import { RayshaderModel, MaterialModel } from "./Yuelongxueshan";
 const Scene = ({ texture }) => {
   return (
     <>
-      <fog attach='fog' args={[0xfff0ea, 70, 150]} />
+      <fog attach='fog' args={[0xfff0ea, 50, 200]} />
       <ambientLight />
       <spotLight
         castShadow={texture}
@@ -31,7 +31,8 @@ export const ThreeDimensionModel = ({ texture }) => {
     <>
       <Canvas
         camera={{
-          position: [20, 20, 40],
+          fov: 100,
+          position: [30, 20, 10],
         }}
         shadowMap={true}
       >
@@ -44,7 +45,7 @@ export const ThreeDimensionModel = ({ texture }) => {
 const Loader = () => {
   const { progress } = useProgress();
   return (
-    <Html style={{ textAlign: "center" }}>
+    <Html style={{ margin: 0, padding: 0, textAlign: "center" }}>
       <div style={{ fontSize: "2rem" }}>{progress}% loaded</div>
     </Html>
   );

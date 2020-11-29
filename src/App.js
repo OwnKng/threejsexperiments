@@ -8,8 +8,7 @@ function App() {
   return (
     <>
       <div className='titleWrapper'>
-        <h3>YuLongXueShan</h3>
-        <h4>玉龙雪山</h4>
+        <h3>⛰️ YuLongXueShan ⛰️</h3>
         <button onClick={() => toggleTexture((prevState) => !prevState)}>
           {texture ? "satellite overlay" : "material overlay"}
         </button>
