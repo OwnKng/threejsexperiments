@@ -16,10 +16,10 @@ export const MaterialModel = () => {
         castShadow={true}
       >
         <meshStandardMaterial
-          color='#497593'
+          color='#b58a5e'
           side={THREE.DoubleSide}
-          roughness={0}
-          metalness={0}
+          roughness={0.8}
+          metalness={0.5}
           fog={true}
         />
       </mesh>

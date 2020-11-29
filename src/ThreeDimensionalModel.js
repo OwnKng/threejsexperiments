@@ -1,22 +1,23 @@
 import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
-import { OrbitControls, useProgress } from "drei";
+import { OrbitControls, Loader } from "drei";
 import { RayshaderModel, MaterialModel } from "./Yuelongxueshan";
-import { a, useTransition } from "@react-spring/web";
+// import Loader from "./Loader";
 
 const Scene = ({ texture }) => {
   return (
     <>
+      <fog attach='fog' args={[0xfff0ea, 70, 150]} />
       <ambientLight />
       <spotLight
         castShadow={texture}
         intensity={1}
-        position={texture ? [0, 100, 0] : [60, 40, 30]}
+        position={texture ? [0, 100, 0] : [70, 20, 30]}
       />
       <pointLight
         position={[0, 20, 0]}
-        color={texture ? "white" : "red"}
-        intensity={0.5}
+        color={texture ? "white" : "lightblue"}
+        intensity={texture ? 1 : 0.4}
       />
       <Suspense fallback={null}>
         {texture ? <RayshaderModel /> : <MaterialModel />}
@@ -31,7 +32,7 @@ export const ThreeDimensionModel = ({ texture }) => {
     <>
       <Canvas
         camera={{
-          position: [0, 80, 100],
+          position: [20, 20, 40],
         }}
         shadowMap={true}
       >
@@ -39,28 +40,5 @@ export const ThreeDimensionModel = ({ texture }) => {
       </Canvas>
       <Loader />
     </>
-  );
-};
-
-const Loader = () => {
-  const { active, progress } = useProgress();
-  const transition = useTransition(active, {
-    from: { opacity: 1, progress: 0 },
-    leave: { opacity: 0 },
-    update: { progress },
-  });
-  return transition(
-    ({ progress, opacity }, active) =>
-      active && (
-        <a.div className='loading' style={{ opacity }}>
-          <div className='loading-bar-container'>
-            <a.div className='loading-bar' style={{ width: progress }}>
-              <a.span className='loading-data'>
-                {progress.to((p) => `${p.toFixed(2)}%`)}
-              </a.span>
-            </a.div>
-          </div>
-        </a.div>
-      )
   );
 };
