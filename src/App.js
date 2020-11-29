@@ -11,7 +11,7 @@ function App() {
         <h3>YuLongXueShan</h3>
         <h4>玉龙雪山</h4>
         <button onClick={() => toggleTexture((prevState) => !prevState)}>
-          {texture ? "toggle rayshader" : "toggle material"}
+          {texture ? "satellite overlay" : "material overlay"}
         </button>
       </div>
       <ThreeDimensionModel texture={texture} />

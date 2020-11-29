@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
-import { OrbitControls, Loader } from "drei";
+import { OrbitControls, useProgress, Html } from "drei";
 import { RayshaderModel, MaterialModel } from "./Yuelongxueshan";
 
 const Scene = ({ texture }) => {
@@ -18,7 +18,7 @@ const Scene = ({ texture }) => {
         color={texture ? "white" : "lightblue"}
         intensity={texture ? 1 : 0.4}
       />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         {texture ? <RayshaderModel /> : <MaterialModel />}
       </Suspense>
       <OrbitControls />
@@ -37,7 +37,15 @@ export const ThreeDimensionModel = ({ texture }) => {
       >
         <Scene texture={texture} fog />
       </Canvas>
-      <Loader />
     </>
+  );
+};
+
+const Loader = () => {
+  const { progress } = useProgress();
+  return (
+    <Html>
+      <div style={{ fontSize: "2rem" }}>{progress}%</div>
+    </Html>
   );
 };
