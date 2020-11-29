@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls, Loader } from "drei";
 import { RayshaderModel, MaterialModel } from "./Yuelongxueshan";
-// import Loader from "./Loader";
 
 const Scene = ({ texture }) => {
   return (

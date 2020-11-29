@@ -3,7 +3,7 @@ import "./App.css";
 import { ThreeDimensionModel } from "./ThreeDimensionalModel";
 
 function App() {
-  const [texture, toggleTexture] = useState(false);
+  const [texture, toggleTexture] = useState(true);
 
   return (
     <>
