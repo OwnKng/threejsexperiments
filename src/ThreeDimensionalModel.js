@@ -44,8 +44,8 @@ export const ThreeDimensionModel = ({ texture }) => {
 const Loader = () => {
   const { progress } = useProgress();
   return (
-    <Html>
-      <div style={{ fontSize: "2rem" }}>{progress}%</div>
+    <Html style={{ textAlign: "center" }}>
+      <div style={{ fontSize: "2rem" }}>{progress}% loaded</div>
     </Html>
   );
 };
